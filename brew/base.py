@@ -185,8 +185,7 @@ class Ensemble(object):
 
             for i, c in enumerate(self.classifiers):
                 if mode == 'probs':
-                    probas = np.zeros((X.shape[0], n_classes))
-                    probas[:, list(c.classes_)] = c.predict_proba(X)
+                    probas= np.copy(c.predict_proba(X))
                     out[:, :, i] = probas
 
                 elif mode == 'votes':
